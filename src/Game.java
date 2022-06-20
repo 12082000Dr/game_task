@@ -3,9 +3,35 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Game {
+    public String validate(int bull, int cow) {
+        String v_bull = null;
+        String v_cow = null;
+
+        if (cow == 1) {
+            v_cow = cow + " корова";
+        } else if (cow > 1) {
+            v_cow = cow + " коровы";
+        }
+
+        if (bull == 1) {
+            v_bull = bull + " бык";
+        } else {
+            v_bull = bull + " быка";
+        }
+
+        if (bull == 0) {
+            return v_cow;
+        } else if (cow == 0) {
+            return v_bull;
+        } else {
+            return v_bull + " " + v_cow;
+        }
+    }
+
     public static void main(String[] args) {
         int min = 1000;
         int max = 9999;
+        Game game = new Game();
         Random random = new Random();
         int randomNumber = random.nextInt(max - min) + min;
         String strNumber = randomNumber + "";
@@ -45,7 +71,7 @@ public class Game {
                     }
                 }
             }
-
+            System.out.println(game.validate(bull, cow));
         }
     }
 }
