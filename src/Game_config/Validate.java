@@ -27,6 +27,7 @@ public class Validate {
     }
 
     public String validate_result_ending(int count) {
+        //TODO что будет если будет 21 попытка
         if (count == 1) {
             return " попытка";
         } else if (count > 1 && count < 5) {

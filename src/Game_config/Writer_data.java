@@ -5,11 +5,14 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
+//TODO у тебя класс называется "записыватель данных", то есть он должен только записывать данные
+// а он у тебя и игру инициализирует, и заканчивает игру
 public class Writer_data {
 
     public void initGame(int count, String strNumber) {
         String dateGame = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm"));
         try {
+            //TODO writer можно сделать полем класса
             FileWriter writer = new FileWriter("result_history.txt", true);
             String data = "Game є" + count + " " + dateGame + " «агаданна€ строка " + strNumber + "\n";
             writer.append(data);
@@ -53,6 +56,7 @@ public class Writer_data {
                 return "";
             }
         } catch (FileNotFoundException e) {
+            //TODO на практике так лучше не делать. Нужно хотя бы залогировать (некритично)
             return "";
         }
     }

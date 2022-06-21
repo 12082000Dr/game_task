@@ -12,8 +12,12 @@ public class Game {
         Validate validate = new Validate();
         Random random = new Random();
 
+        //TODO строка может начинаться с нуля. При такой генерации нуля в начале быть не может
+        // в загаданной строке цифры не должны повторяться
         int randomNumber = random.nextInt(max - min) + min;
+        //TODO В строку можно преобразовать с помощью Integer.toString(randomNumber)
         String strNumber = randomNumber + "";
+        System.out.println(strNumber);
         System.out.println("”гадайте четырехзначное загаданное число: ");
 
         String dataGame = writer_data.readData();
@@ -32,12 +36,14 @@ public class Game {
             String inputNumber = scanner.nextLine();
 
             //ѕроверка ввода на длинну
+            //TODO хорошие проверки. Молодец
             if (inputNumber.length() != 4) {
                 System.out.println("„исло должно быть четырехзначным! ¬ведите заново: ");
                 continue;
             }
 
             //ѕроверка ввода на наличие букв
+            //TODO хорошие проверки. Молодец
             if (!inputNumber.matches("[-+]?\\d+")) {
                 System.out.println("ќтвет должен содержать только цифры! ¬ведите заново: ");
                 continue;
@@ -70,6 +76,7 @@ public class Game {
                     }
                 }
             }
+            //TODO можно просто написать counterGame++
             counterGame += 1;
             writer_data.writeData("\t«апрос: " + inputNumber + " ќтвет: " + validate.validate_animals(bull, cow) + "\n");
             System.out.println(validate.validate_animals(bull, cow));
