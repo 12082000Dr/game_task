@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 //TODO у тебя класс называется "записыватель данных", то есть он должен только записывать данные
 // а он у тебя и игру инициализирует, и заканчивает игру
-public class Writer_data {
+public class InputOutputData {
 
     public void initGame(int count, String strNumber) {
         String dateGame = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm"));
@@ -45,7 +45,7 @@ public class Writer_data {
 
     public String readData() {
         File file = new File("result_history.txt");
-        String data = null;
+        String data;
         try {
             Scanner scanner = new Scanner(file);
             if (scanner.hasNextLine()) {
@@ -56,8 +56,9 @@ public class Writer_data {
                 return "";
             }
         } catch (FileNotFoundException e) {
+            //Ћогирование ошибки
+            return e.getMessage();
             //TODO на практике так лучше не делать. Нужно хотя бы залогировать (некритично)
-            return "";
         }
     }
 }

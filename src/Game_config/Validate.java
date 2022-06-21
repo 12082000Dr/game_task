@@ -26,11 +26,13 @@ public class Validate {
         }
     }
 
-    public String validate_result_ending(int count) {
-        //TODO что будет если будет 21 попытка
-        if (count == 1) {
-            return " попытка";
-        } else if (count > 1 && count < 5) {
+    public String validate_result_ending(Integer count) {
+        // TODO что будет если будет 21 попытка
+        //Заменено на проверку последнего разряда
+        int dischargeNumber = Integer.parseInt(String.valueOf(count.toString().charAt(count.toString().length() - 1)));
+        if (dischargeNumber == 1) {
+            return " попытку";
+        } else if (dischargeNumber > 1 && dischargeNumber < 5) {
             return " попытки";
         } else {
             return " попыток";
